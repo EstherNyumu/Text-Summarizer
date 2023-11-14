@@ -90,16 +90,11 @@ fun TextSummarisedApp() {
         Text(text ="How long do you want your summarised text to be:")
 
         Row {
-            val interactionSource = remember{ MutableInteractionSource() }
-            val isPressed by interactionSource.collectIsPressedAsState()
-            // Use the state to change the background color
-            val color = if (isPressed) Color(0xFFEFB8C8) else Color(0xFF6650a4)
             Button(onClick = {
                 length = "short"
             },
                 modifier = Modifier.padding(5.dp),
-                interactionSource = interactionSource,
-                colors= ButtonDefaults.buttonColors(color)
+                colors= ButtonDefaults.buttonColors(Purple40)
             ) {
                 Text(text = "short")
             }
@@ -107,16 +102,14 @@ fun TextSummarisedApp() {
                 length = "medium"
             },
                 modifier = Modifier.padding(5.dp),
-                interactionSource = interactionSource,
-                colors= ButtonDefaults.buttonColors(color)) {
+                colors= ButtonDefaults.buttonColors(Purple40)) {
                 Text(text = "medium")
             }
             Button(onClick = {
                 length = "long"
             },
                 modifier = Modifier.padding(5.dp),
-                interactionSource = interactionSource,
-                colors= ButtonDefaults.buttonColors(color)) {
+                colors= ButtonDefaults.buttonColors(Purple40)) {
                 Text(text = "long")
             }
         }
