@@ -117,15 +117,13 @@ fun TextSummarisedApp() {
 
         Button(
             onClick = {
-                // Define your OkHttpClient and request here as shown in your original code
-
+                // Define your OkHttpClient and request here as shown in your original cod
                 // Execute the network request in a background thread
                 GlobalScope.launch(Dispatchers.IO) {
                     try {
                         val client = OkHttpClient()
 
                         val mediaType = "application/json".toMediaType()
-//                    val body =  RequestBody.create(mediaType, "{\"length\":\"length\",\"format\":\"paragraph\",\"model\":\"command\",\"extractiveness\":\"low\",\"temperature\":0,\"text\":\"inputText\"}")
                         val body = RequestBody.create(
                             mediaType,
                             "{\"length\":\"$length\",\"format\":\"paragraph\",\"model\":\"command\",\"extractiveness\":\"high\",\"temperature\":0,\"text\":\"$inputText\"}"
@@ -151,7 +149,7 @@ fun TextSummarisedApp() {
 //                            summaryText = responseBody ?: "No response data"
                         }
                         else {
-                            // Handle the errorwwwwq
+                            // Handle the error
                             summaryText = "Error: ${response.code} - ${response.message}\n This text is too short to be summarised.\n" +
                                     "The format of your text is wrong.\n Do not have any line- breaks!!"
                         }
@@ -160,12 +158,6 @@ fun TextSummarisedApp() {
                         summaryText = "Error: ${e.message}"
                     }
                 }
-                // Remember to cancel the job if the composable is removed
-//                DisposableEffect(Unit) {
-//                    onDispose {
-//                        job.cancel()
-//                    }
-//                }
             },
             modifier = Modifier.padding(10.dp),
             colors = ButtonDefaults.buttonColors(Purple40)
